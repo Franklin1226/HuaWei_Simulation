@@ -1,2 +1,3 @@
-6 2 10
-total_size
+root/simulation/config/ip_addr.txt
+root/simulation/files/data_file
+10737418240
