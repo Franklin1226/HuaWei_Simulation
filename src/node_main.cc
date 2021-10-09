@@ -9,6 +9,7 @@
 // 如果该节点没有失效，将该节点中储存的数据传输到目标节点
 #include "../include/config_reader.hh"
 #include "../include/address_handler.hh"
+#include "../include/data_node.hh"
 
 #include <iostream>
 #include <memory>
@@ -36,5 +37,11 @@ int main(int argc, char* argv[]) {
 
     if(id < addr_handler->get_k() + addr_handler->get_m()) {
         //数据存储节点，监听目标节点的链接请求
-    }    
+        DataNode *dn = new DataNode(id, conf_reader->get_data_addr());
+        //执行修复操作，发送本节点存放的数据
+        dn->send_data();
+    } else {
+        //目标节点，负责接受普通节点的数据
+
+    }
 }

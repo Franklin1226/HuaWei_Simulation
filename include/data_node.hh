@@ -1,7 +1,8 @@
 #ifndef SIMU_DATA_NODE_HH
 #define SIMU_DATA_NODE_HH
+#define CHUNK_SIZE 4194304
 #include "socket_solver.hh"
-
+#include "sockpp/tcp_acceptor.h"
 struct data_chunk
 {
   uint16_t chunk_id;
@@ -13,16 +14,18 @@ struct data_chunk
   data_piece() : data_piece(0, 0, nullptr){};
 };
 
-class data_node {
+class DataNode {
 private:
     socketapp::tcp_acceptor acc;
-    SocketSolver *soket;
+    sockpp::tcp_socket sock;
     uint16_t tid;
     std::string data_addr;
 public:
-    SocketSolver(int &id, std::string &_data_addr);
+    DataNode(int &id, std::string &_data_addr);
+    DataNode();
+    ~DataNode();
     void read(void* buf, ssize_t size);
-    void repair();
+    void send_data();
     void write(void* buf, ssize_t size);
 }
 
