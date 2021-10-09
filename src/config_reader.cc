@@ -1,5 +1,7 @@
 #include "../include/config_reader.hh"
+
 #include <iostream>
+#include <fstream>
 
 ConfigReader::ConfigReader(const std::string config_addr) {
     std::ifstream cf(config_addr);
@@ -11,9 +13,11 @@ ConfigReader::ConfigReader(const std::string config_addr) {
     cf >> ip_addr;
     cf >> data_addr;
     cf >> total_size;
+
+    cf.close();
 }
 
-ConfigReader::ConfigReader() {}
+ConfigReader::ConfigReader() = default;
 
 ConfigReader::~ConfigReader() = default;
 

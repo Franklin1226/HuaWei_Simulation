@@ -17,6 +17,6 @@ public:
     std::string get_ip_addr();
     std::string get_data_addr();
     uint32_t get_total_size();
-}
+};
 
 #endif
