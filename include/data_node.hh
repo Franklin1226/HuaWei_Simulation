@@ -19,9 +19,11 @@ private:
     socketapp::tcp_acceptor acc;
     sockpp::tcp_socket sock;
     uint16_t tid;
+    uint32_t data_file_size;
     std::string data_addr;
+
 public:
-    DataNode(int &id, std::string &_data_addr);
+    DataNode(int &id, std::string &_data_addr, uint32_t _data_file_size);
     DataNode();
     ~DataNode();
     void read(void* buf, ssize_t size);
